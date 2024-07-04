@@ -1,0 +1,23 @@
+num=5;  % this is number until where factorial will found out
+fact=0;
+temp=(num+1);
+for i=0:5  % for loop till the number num
+    fact=fact*i;
+    if fact==0
+        fact =1;
+        temp(i+1)=fact;
+        fprintf('i=%d \t fact=%d\n',i,fact);
+        
+    else
+        temp(i+1)=fact;
+        fprintf('i=%d \t fact=%d\n',i,fact);
+        plot(i,fact);
+        continue;
+    end
+end
+% from here ploting of graph will take place
+j=[0,1,2,3,4,5];
+plot(j,temp);   %this will plot a graph of factorial with its number untill num
+title('Factorial of a number');
+xlabel('Number');
+ylabel('Factorial');
