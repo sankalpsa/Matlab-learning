@@ -1,0 +1,121 @@
+%Author : Sankalp B Chandavarkar
+%Date : 7 JULY 2024
+
+
+limit=5;
+fibb=zeros(limit,limit);
+
+%filling the fibb matrix with fabonaci values till certain limit
+for i=1:5
+    f0=0;
+    f1=1;
+    for j=2:i
+        if j<=i
+            fibb(i,j)=f0+f1;
+            f1=f0;
+            f0=fibb(i,j);
+        end
+        end
+end
+
+ % for taking out unique values
+for i=0:max(fibb(5,:))
+    val(1,i+1)=i;
+end
+% making matrix of zeros
+count=zeros(5,5);
+for i=1:5
+    count(i,1)=1;
+end
+
+% entering the count of occurance of unique values in COUNT matrix
+for i=2:5
+    for j=2:5
+        if j<=i
+            for k=2:length(val)
+                if val(k)==fibb(i,j)
+                    count(i,k)=sum(fibb(i,:)==val(k));
+                end
+            end
+        end
+        
+    end
+end
+% copying the COUNT matrix to OUT matrix
+out=zeros(6,6);
+for i=1:5
+    for j=1:5
+        out(i,j)=count(i,j);
+    end
+end
+
+% ploting the figure for the occurnace of unique values in the fibonacci
+% series
+
+figure;
+x = [0:5];
+%plot 1 for upto  1st series
+
+subplot(3,3,1)
+p2 = plot(x, out(1,:), '--', 'LineWidth', 1.5);
+title('Count of Unique Digits of Fibonacci Series', 'FontSize', 12);
+legend('Series 1');
+xlabel('Unique Digits','FontSize',12);
+ylabel('No. of Occurance','FontSize', 12);
+axis([0 5 0 5]);
+ticks = [0:5];
+set(gca,'XTick',ticks);
+set(gca,'YTick',ticks);
+
+%plot 2 for upto  2nd series    
+subplot(3,3,2)
+p2 = plot(x, out(1,:), '--', x, out(2,:), '--p', 'LineWidth', 1.5);
+title('Count of Unique Digits of Fibonacci Series', 'FontSize', 12);
+legend('Series 1', 'Series 2');
+xlabel('Unique Digits','FontSize',12);
+ylabel('No. of Occurance','FontSize', 12);
+axis([0 5 0 5]);
+ticks = [0:5];
+set(gca,'XTick',ticks);
+set(gca,'YTick',ticks);
+    
+%plot 3 for upto 3rd series
+subplot(3,3,4)
+p2 = plot(x, out(1,:), '--', x, out(2,:), '--p', x, out(3,:), '-+', 'LineWidth', 1.5);
+title('Count of Unique Digits of Fibonacci Series', 'FontSize', 12);
+legend('Series 1', 'Series 2','Series 3');
+xlabel('Unique Digits','FontSize',12);
+ylabel('No. of Occurance','FontSize', 12);
+axis([0 5 0 5]);
+ticks = [0:5];
+set(gca,'XTick',ticks);
+set(gca,'YTick',ticks);
+
+
+%plot 4 for upto 4th series
+subplot(3,3,5)
+p2 = plot(x, out(1,:), '--', x, out(2,:), '--p', x, out(3,:), '-+', x, out(4,:), '-o', 'LineWidth', 1.5);
+title('Count of Unique Digits of Fibonacci Series', 'FontSize', 12);
+legend('Series 1', 'Series 2','Series 3', 'Series 4');
+xlabel('Unique Digits','FontSize',12);
+ylabel('No. of Occurance','FontSize', 12);
+axis([0 5 0 5]);
+ticks = [0:5];
+set(gca,'XTick',ticks);
+set(gca,'YTick',ticks);
+
+%plot 5 for upto 5th series
+subplot(3,3,6)
+p2 = plot(x, out(1,:), '--', x, out(2,:), '--p', x, out(3,:), '-+', x, out(4,:), '-o', x, out(5,:), '-*g', 'LineWidth', 1.5);
+title('Count of Unique Digits of Fibonacci Series', 'FontSize', 12);
+legend('Series 1', 'Series 2','Series 3', 'Series 4', 'Series 5');
+xlabel('Unique Digits','FontSize',12);
+ylabel('No. of Occurance','FontSize', 12);
+axis([0 5 0 5]);
+ticks = [0:5];
+set(gca,'XTick',ticks);
+set(gca,'YTick',ticks);
+
+%saving the image as jpg
+saveas(gcf, 'fibonacci_count.jpg', 'jpg');
+        
